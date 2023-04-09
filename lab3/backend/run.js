@@ -1,15 +1,14 @@
 var api = require("./api.js").app;
 var hamming = require("./hamming.js");
-
 api.put("/message", function (request, response) {
-   // var bits = distortBit(request.body.bits, 5);
-    var bits = distortBit(request.body.bits,2);
+   var bits = distortBit(request.body.bits,2);
    var decoded = hamming.decode(bits);
 
   if (decoded.errorCorrected) {
     response.json("One error corrected on position: " + decoded.errorPosition);
+  } else {
+    response.json("Message received without errors");
   }
-  response.json("Message received without errors");
 });
 
 api.listen(3000, function () {

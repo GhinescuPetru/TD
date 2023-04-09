@@ -5,16 +5,16 @@ function decode(bits) {
 
   var errorDetected = false;
 
-  if (bits.length == 4) {
+  if (bits.length == 7) {
     var z4 = parity(bits[3] + bits[4] + bits[5] + bits[6]);
     var z2 = parity(bits[1] + bits[2] + bits[5] + bits[6]);
     var z1 = parity(bits[0] + bits[2] + bits[4] + bits[6]);
 
     var errorPosition = z1 * 1 + z2 * 2 + z4 * 4
   }
-  else if(bits.length == 8) {
-    var z8 = parity(bits[7] + bits[8] + bits[9] + bits[10]);
-    var z4 = parity(bits[3] + bits[4] + bits[5] + bits[6]);
+  else if(bits.length == 12) {
+    var z8 = parity(bits[7] + bits[8] + bits[9] + bits[10] + bits[11]);
+    var z4 = parity(bits[3] + bits[4] + bits[5] + bits[6] + bits[11]);
     var z2 = parity(bits[1] + bits[2] + bits[5] + bits[6] + bits[9] + bits[10]);
     var z1 = parity(bits[0] + bits[2] + bits[4] + bits[6] + bits[8] + bits[10]);
 
